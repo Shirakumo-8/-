@@ -9,12 +9,12 @@
 // ==/UserScript==
 
 (function() {
-    // 创建包含按钮的容器元素（长方形方框）
+    
     const box = document.createElement('div');
     box.style.position = 'fixed';
-    box.style.top = '50%';  // 改为顶部50%，实现垂直居中
-    box.style.left = '50%';  // 改为左侧50%，实现水平居中
-    box.style.transform = 'translate(-50%, -50%)';  // 通过偏移自身宽高一半来精准居中
+    box.style.top = '50%';  
+    box.style.left = '50%';  
+    box.style.transform = 'translate(-50%, -50%)';  
     box.style.width = '200px';
     box.style.height = '50px';
     box.style.backgroundColor = 'gray';
@@ -22,7 +22,7 @@
     box.style.borderRadius = '5px';
     box.style.zIndex = '9999';
 
-    // 创建开始按钮
+   
     const startButton = document.createElement('button');
     startButton.textContent = '开始';
     startButton.style.flex = '1';
@@ -30,11 +30,16 @@
     startButton.style.color = 'white';
     startButton.style.border = 'none';
     startButton.style.borderRadius = '5px';
+    startButton.style.transition = 'transform 0.2s ease'; 
     startButton.addEventListener('click', function() {
+        this.style.transform = 'scale(0.9)'; 
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 200);
         startScrolling();
     });
 
-    // 创建停止按钮
+    
     const stopButton = document.createElement('button');
     stopButton.textContent = '停止';
     stopButton.style.flex = '1';
@@ -42,7 +47,12 @@
     stopButton.style.color = 'white';
     stopButton.style.border = 'none';
     stopButton.style.borderRadius = '5px';
+    stopButton.style.transition = 'transform 0.2s ease'; 
     stopButton.addEventListener('click', function() {
+        this.style.transform = 'scale(0.9)'; 
+        setTimeout(() => {
+            this.style.transform = 'scale(1)'; 
+        }, 200);
         stopScrolling();
     });
 
